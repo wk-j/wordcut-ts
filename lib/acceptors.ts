@@ -1,22 +1,23 @@
 var _ = require("underscore");
 
-var _Acceptors = {
-  creators: null,
-  current: null,
-  tag: null,
+export class Acceptors {
 
-  init: function () {
+  creators = [];
+  current = [];
+  tag = {};
+
+  init() {
     this.creators = [];
     this.current = [];
     this.tag = {};
-  },
+  }
 
-  reset: function () {
+  reset() {
     this.current = [];
     this.tag = {}
-  },
+  }
 
-  transit: function (ch) {
+  transit(ch) {
     var self = this;
 
     self.creators.forEach(function (creator) {
@@ -39,17 +40,19 @@ var _Acceptors = {
     }
     self.current = _current;
 
-  },
+  }
 
-  getFinalAcceptors: function () {
+  getFinalAcceptors() {
     return this.current.filter(function (acceptor) {
       return acceptor.isFinal;
     });
   }
 };
 
+/*
 module.exports = function () {
   var acceptors = _.clone(_Acceptors);
   acceptors.init();
   return acceptors;
 };
+*/
