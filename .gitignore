@@ -9,6 +9,18 @@ Icon
 .Spotlight-V100
 .Trashes
 
+tools
+
+lib/*.js
+lib/*.map
+server.js
+server*.map
+
+test/*.js
+test/*.map
+
+temp
+
 # --------------------
 # Node Files
 # --------------------

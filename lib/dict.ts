@@ -4,12 +4,12 @@ var RIGHT = 1;
 var path = require("path");
 var glob = require("glob");
 
-var WordcutDict = {
+var _WordcutDict = {
 
 
   init: function (dictPathFile, withDefault, words) {
     withDefault = withDefault || false
-    defaultDict = path.normalize(__dirname + "/..") + "/data/tdict-*.txt";
+    var defaultDict = path.normalize(__dirname + "/..") + "/data/tdict-*.txt";
     this.dict=[]
     var dictPathIsDefined = dictPathFile !== undefined
     var dictPath = (withDefault || !dictPathIsDefined) ? [defaultDict]: [];
@@ -47,7 +47,7 @@ var WordcutDict = {
     finalize = finalize===undefined || finalize;
     files = this.sortuniq(this.flatten(files.map(function(x){return glob.sync(x)})))
     for (var i = 0; i < files.length; i++) {
-      words = fs.readFileSync(files[i], {
+      var words = fs.readFileSync(files[i], {
                   encoding: "UTF-8"
               })
               .split(/[\r\n]+/)
@@ -142,4 +142,4 @@ var WordcutDict = {
     return [].concat.apply([], a);
   }
 };
-module.exports = WordcutDict;
+module.exports = _WordcutDict;

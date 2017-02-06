@@ -1,6 +1,6 @@
 var _ = require("underscore")
   , WordcutCore = require("./wordcut_core");
-var PathInfoBuilder = {
+var _PathInfoBuilder = {
 
   /*
     buildByPartAcceptors: function(path, acceptors, i) {
@@ -73,5 +73,5 @@ var PathInfoBuilder = {
 };
 
 module.exports = function() {
-  return _.clone(PathInfoBuilder);
+  return _.clone(_PathInfoBuilder);
 }

@@ -61,6 +61,6 @@ var PartRule = {
   }
 };
 
-var ThaiRules = [Rule0, PartRule];
+var _ThaiRules = [Rule0, PartRule];
 
-module.exports = ThaiRules;
+module.exports = _ThaiRules;

@@ -1,4 +1,4 @@
-var WordcutCore = {
+var _WordcutCore = {
 
   buildPath: function(text) {
     var self = this
@@ -82,4 +82,4 @@ var WordcutCore = {
   }
 };
 
-module.exports = WordcutCore;
+module.exports = _WordcutCore;

@@ -1,6 +1,6 @@
 var _ = require("underscore");
 
-var Acceptors = {
+var _Acceptors = {
   creators: null,
   current: null,
   tag: null,
@@ -49,7 +49,7 @@ var Acceptors = {
 };
 
 module.exports = function() {
-  var acceptors = _.clone(Acceptors);
+  var acceptors = _.clone(_Acceptors);
   acceptors.init();
   return acceptors;
 };

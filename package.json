@@ -1,7 +1,7 @@
 {
-  "name": "wordcut",
+  "name": "wordcut-ts",
   "description": "Thai word breaker for Node.js",
-  "version": "0.8.1",
+  "version": "0.0.1",
   "homepage": "https://github.com/veer66/wordcut",
   "author": {
     "name": "Vee Satayamas",
@@ -41,16 +41,21 @@
     "boundary"
   ],
   "dependencies": {
+    "@types/underscore": "^1.7.36",
     "body": "*",
     "chai": "*",
     "glob": "^5.0.14",
     "mocha": "*",
+    "node": "^0.0.0",
     "underscore": "*"
   },
   "scripts": {
     "test": "mocha test"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^7.0.5",
     "brfs": "^1.4.1",
     "browserify": "^11.2.0",
     "del": "^2.0.2",
@@ -58,6 +63,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
-    "gulp-uglify": "^1.4.1"
+    "gulp-uglify": "^1.4.1",
+    "typescript": "^2.1.5"
   }
 }

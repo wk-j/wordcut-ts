@@ -1,7 +1,7 @@
 var _ = require("underscore");
 
 
-var PathSelector = {
+var _PathSelector = {
   selectPath: function(paths) {
     var path = paths.reduce(function(selectedPath, path) {
       if (selectedPath == null) {        
@@ -29,5 +29,5 @@ var PathSelector = {
 };
 
 module.exports = function() {
-  return _.clone(PathSelector);
+  return _.clone(_PathSelector);
 };
