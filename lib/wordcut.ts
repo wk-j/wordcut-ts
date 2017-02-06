@@ -4,25 +4,26 @@ var WordcutCore = require("./wordcut_core");
 var PathInfoBuilder = require("./path_info_builder");
 var PathSelector = require("./path_selector");
 import { Acceptors } from "./acceptors";
-var latinRules = require("./latin_rules");
+import { LatinRules } from "./latin_rules";
 var thaiRules = require("./thai_rules");
 var _ = require("underscore");
+
+
 
 var Wordcut = Object.create(WordcutCore);
 Wordcut.defaultPathInfoBuilder = PathInfoBuilder;
 Wordcut.defaultPathSelector = PathSelector;
 Wordcut.defaultAcceptors = Acceptors;
-Wordcut.defaultLatinRules = latinRules;
+Wordcut.defaultLatinRules = new LatinRules();
 Wordcut.defaultThaiRules = thaiRules;
 Wordcut.defaultDict = new WordcutDict();
-
 
 Wordcut.initNoDict = function (dict_path) {
   var self = this;
   self.pathInfoBuilder = new self.defaultPathInfoBuilder;
   self.pathSelector = new self.defaultPathSelector;
   self.acceptors = new self.defaultAcceptors;
-  self.defaultLatinRules.forEach(function (rule) {
+  self.defaultLatinRules.rules.forEach(function (rule) {
     self.acceptors.creators.push(rule);
   });
   self.defaultThaiRules.forEach(function (rule) {

@@ -1,5 +1,5 @@
-var WordRule = {
-  createAcceptor: function (tag) {
+export class WordRule  {
+  createAcceptor(tag) {
     if (tag["WORD_RULE"])
       return null;
 
@@ -22,10 +22,10 @@ var WordRule = {
       w: 1
     };
   }
-};
+}
 
-var NumberRule = {
-  createAcceptor: function (tag) {
+export class NumberRule {
+  createAcceptor (tag) {
     if (tag["NUMBER_RULE"])
       return null;
 
@@ -47,11 +47,12 @@ var NumberRule = {
       w: 1
     };
   }
-};
+}
 
-var SpaceRule = {
-  tag: "SPACE_RULE",
-  createAcceptor: function (tag) {
+export class SpaceRule {
+
+  tag ="SPACE_RULE";
+  createAcceptor (tag) {
 
     if (tag["SPACE_RULE"])
       return null;
@@ -71,16 +72,16 @@ var SpaceRule = {
         return this;
       },
       isError: false,
-      tag: SpaceRule.tag,
+      tag: this.tag,
       w: 1,
       type: "SPACE_RULE"
-    };
+    }
   }
 }
 
-var SingleSymbolRule = {
-  tag: "SINSYM",
-  createAcceptor: function (tag) {
+export class SingleSymbolRule {
+  tag = "SINSYM";
+  createAcceptor (tag) {
     return {
       strOffset: 0,
       isFinal: false,
@@ -97,11 +98,20 @@ var SingleSymbolRule = {
       tag: "SINSYM",
       w: 1,
       type: "SINSYM"
-    };
+    }
   }
 }
 
+var rules = [
+  new WordRule(),
+  new SpaceRule(),
+  new SingleSymbolRule(),
+  new NumberRule()
+]
 
-var LatinRules = [WordRule, SpaceRule, SingleSymbolRule, NumberRule];
+export class LatinRules {
+  rules = rules;
+}
 
-module.exports = LatinRules;
+//var LatinRules = [WordRule, SpaceRule, SingleSymbolRule, NumberRule];
+//module.exports = LatinRules;
