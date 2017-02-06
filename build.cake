@@ -20,7 +20,7 @@ Task("Clean").Does(() =>{
 Action<string, string> run = (cmd, args) => StartProcess(cmd, new ProcessSettings { Arguments = args });
 
 Task("Build").Does(() => run("node", "node_modules/typescript/lib/tsc.js"));
-Task("Test").Does(() => run("mocha", "test"));
+Task("Test").Does(() => run("npm", "run test"));
 
 var target = Argument("Target", "Default");
 RunTarget(target);
