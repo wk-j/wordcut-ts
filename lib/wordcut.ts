@@ -1,14 +1,12 @@
 var sys = require("sys");
 import { WordcutDict } from "./dict";
 var WordcutCore = require("./wordcut_core");
-var PathInfoBuilder = require("./path_info_builder");
+import { PathInfoBuilder } from "./path_info_builder";
 var PathSelector = require("./path_selector");
 import { Acceptors } from "./acceptors";
 import { LatinRules } from "./latin_rules";
 var thaiRules = require("./thai_rules");
 var _ = require("underscore");
-
-
 
 var Wordcut = Object.create(WordcutCore);
 Wordcut.defaultPathInfoBuilder = PathInfoBuilder;

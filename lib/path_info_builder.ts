@@ -1,19 +1,8 @@
 var _ = require("underscore");
 var WordcutCore = require("./wordcut_core");
-var _PathInfoBuilder = {
 
-  /*
-    buildByPartAcceptors: function(path, acceptors, i) {
-    var 
-    var genInfos = partAcceptors.reduce(function(genInfos, acceptor) {
-      
-    }, []);
-    
-    return genInfos;
-  } 
-  */
-
-  buildByAcceptors: function (path, finalAcceptors, i) {
+export class PathInfoBuilder {
+  buildByAcceptors (path, finalAcceptors, i) {
     var self = this;
     var infos = finalAcceptors.map(function (acceptor) {
       var p = i - acceptor.strOffset + 1
@@ -38,9 +27,9 @@ var _PathInfoBuilder = {
       return info;
     });
     return infos.filter(function (info) { return info; });
-  },
+  }
 
-  fallback: function (path, leftBoundary, text, i) {
+  fallback (path, leftBoundary, text, i) {
     var _info = path[leftBoundary];
     if (text[i].match(/[\u0E48-\u0E4E]/)) {
       if (leftBoundary != 0)
@@ -67,9 +56,9 @@ var _PathInfoBuilder = {
         type: "UNK"
       };
     }
-  },
+  }
 
-  build: function (path, finalAcceptors, i, leftBoundary, text) {
+  build (path, finalAcceptors, i, leftBoundary, text) {
     var basicPathInfos = this.buildByAcceptors(path, finalAcceptors, i);
     if (basicPathInfos.length > 0) {
       return basicPathInfos;
@@ -79,6 +68,7 @@ var _PathInfoBuilder = {
   }
 };
 
+/*
 module.exports = function () {
   return _.clone(_PathInfoBuilder);
-}
+}*/
