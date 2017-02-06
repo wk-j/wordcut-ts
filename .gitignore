@@ -19,6 +19,9 @@ server*.map
 test/*.js
 test/*.map
 
+experimental/*.js
+experimental/*.map
+
 temp
 
 # --------------------

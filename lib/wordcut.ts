@@ -1,12 +1,12 @@
-var sys = require("sys")
-  , WordcutDict = require("./dict")
-  , WordcutCore = require("./wordcut_core")
-  , PathInfoBuilder = require("./path_info_builder")
-  , PathSelector = require("./path_selector")
-  , Acceptors = require("./acceptors")
-  , latinRules = require("./latin_rules")
-  , thaiRules = require("./thai_rules")
-  , _ = require("underscore");
+var sys = require("sys");
+import { WordcutDict } from "./dict";
+var WordcutCore = require("./wordcut_core");
+var PathInfoBuilder = require("./path_info_builder");
+var PathSelector = require("./path_selector");
+var Acceptors = require("./acceptors");
+var latinRules = require("./latin_rules");
+var thaiRules = require("./thai_rules");
+var _ = require("underscore");
 
 
 var Wordcut = Object.create(WordcutCore);
@@ -15,7 +15,7 @@ Wordcut.defaultPathSelector = PathSelector;
 Wordcut.defaultAcceptors = Acceptors;
 Wordcut.defaultLatinRules = latinRules;
 Wordcut.defaultThaiRules = thaiRules;
-Wordcut.defaultDict = WordcutDict;
+Wordcut.defaultDict = new WordcutDict();
 
 
 Wordcut.initNoDict = function (dict_path) {
@@ -34,7 +34,8 @@ Wordcut.initNoDict = function (dict_path) {
 Wordcut.init = function (dict_path, withDefault, additionalWords) {
   withDefault = withDefault || false;
   this.initNoDict();
-  var dict = _.clone(this.defaultDict);
+  //var dict = _.clone(this.defaultDict);
+  var dict = this.defaultDict;
   dict.init(dict_path, withDefault, additionalWords);
   this.acceptors.creators.push(dict);
 };

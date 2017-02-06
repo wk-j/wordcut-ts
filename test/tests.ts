@@ -1,6 +1,6 @@
 
-var expect = require("chai").expect
-  , wordcut = require("../lib/wordcut");
+var expect = require("chai").expect;
+var wordcut = require("../lib/wordcut");
 
 describe("Wordcut", function () {
 

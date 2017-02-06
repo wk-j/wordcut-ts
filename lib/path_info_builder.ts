@@ -1,5 +1,5 @@
-var _ = require("underscore")
-  , WordcutCore = require("./wordcut_core");
+var _ = require("underscore");
+var WordcutCore = require("./wordcut_core");
 var _PathInfoBuilder = {
 
   /*
