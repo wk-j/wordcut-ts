@@ -10,12 +10,12 @@ var _WordcutDict = {
   init: function (dictPathFile, withDefault, words) {
     withDefault = withDefault || false
     var defaultDict = path.normalize(__dirname + "/..") + "/data/tdict-*.txt";
-    this.dict=[]
+    this.dict = []
     var dictPathIsDefined = dictPathFile !== undefined
-    var dictPath = (withDefault || !dictPathIsDefined) ? [defaultDict]: [];
+    var dictPath = (withDefault || !dictPathIsDefined) ? [defaultDict] : [];
     var dictPathFile = dictPathFile || defaultDict
 
-    if(dictPathIsDefined){
+    if (dictPathIsDefined) {
       if (Array.isArray(dictPathFile)) {
         dictPath.concat.apply(dictPath, dictPathFile);
       } else {
@@ -25,38 +25,38 @@ var _WordcutDict = {
 
     this.addFiles(dictPath, false)
 
-    if(words!==undefined){
+    if (words !== undefined) {
       this.addWords(words, false)
     }
     this.finalizeDict();
   },
 
-  addWords: function(words, finalize){
-    finalize = finalize===undefined || finalize;
+  addWords: function (words, finalize) {
+    finalize = finalize === undefined || finalize;
     this.dict.push.apply(this.dict, words)
-    if(finalize){
+    if (finalize) {
       this.finalizeDict();
     }
   },
 
-  finalizeDict: function(){
+  finalizeDict: function () {
     this.dict = this.sortuniq(this.dict);
   },
 
-  addFiles: function(files, finalize){
-    finalize = finalize===undefined || finalize;
-    files = this.sortuniq(this.flatten(files.map(function(x){return glob.sync(x)})))
+  addFiles: function (files, finalize) {
+    finalize = finalize === undefined || finalize;
+    files = this.sortuniq(this.flatten(files.map(function (x) { return glob.sync(x) })))
     for (var i = 0; i < files.length; i++) {
       var words = fs.readFileSync(files[i], {
-                  encoding: "UTF-8"
-              })
-              .split(/[\r\n]+/)
-              .filter(function (w) {
-                return w.length > 1;
-              })
+        encoding: "UTF-8"
+      })
+        .split(/[\r\n]+/)
+        .filter(function (w) {
+          return w.length > 1;
+        })
       this.addWords(words, false)
     }
-    if(finalize){
+    if (finalize) {
       this.finalizeDict();
     }
   },
@@ -131,13 +131,13 @@ var _WordcutDict = {
     return acceptor;
   },
 
-  sortuniq: function(a){
-    return a.sort().filter(function(item, pos, arr){
+  sortuniq: function (a) {
+    return a.sort().filter(function (item, pos, arr) {
       return !pos || item != arr[pos - 1];
     })
   },
 
-  flatten: function(a){
+  flatten: function (a) {
     //[[1,2],[3]] -> [1,2,3]
     return [].concat.apply([], a);
   }

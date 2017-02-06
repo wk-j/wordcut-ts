@@ -2,18 +2,18 @@ var _ = require("underscore");
 
 
 var _PathSelector = {
-  selectPath: function(paths) {
-    var path = paths.reduce(function(selectedPath, path) {
-      if (selectedPath == null) {        
+  selectPath: function (paths) {
+    var path = paths.reduce(function (selectedPath, path) {
+      if (selectedPath == null) {
         return path;
       } else {
-        if (path.unk < selectedPath.unk) 
-          return path;        
+        if (path.unk < selectedPath.unk)
+          return path;
         if (path.unk == selectedPath.unk) {
           if (path.mw < selectedPath.mw)
             return path
           if (path.mw == selectedPath.mw) {
-            if (path.w < selectedPath.w) 
+            if (path.w < selectedPath.w)
               return path;
           }
         }
@@ -22,12 +22,12 @@ var _PathSelector = {
     }, null);
     return path;
   },
-  
-  createPath: function() {
-    return [{p:null, w:0, unk:0, type: "INIT", mw:0}];
+
+  createPath: function () {
+    return [{ p: null, w: 0, unk: 0, type: "INIT", mw: 0 }];
   }
 };
 
-module.exports = function() {
+module.exports = function () {
   return _.clone(_PathSelector);
 };

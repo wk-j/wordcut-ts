@@ -1,6 +1,6 @@
 var _WordcutCore = {
 
-  buildPath: function(text) {
+  buildPath: function (text) {
     var self = this
       , path = self.pathSelector.createPath()
       , leftBoundary = 0;
@@ -12,10 +12,10 @@ var _WordcutCore = {
       var possiblePathInfos = self
         .pathInfoBuilder
         .build(path,
-               self.acceptors.getFinalAcceptors(),
-               i,
-               leftBoundary,
-               text);
+        self.acceptors.getFinalAcceptors(),
+        i,
+        leftBoundary,
+        text);
       var selectedPath = self.pathSelector.selectPath(possiblePathInfos)
 
       path.push(selectedPath);
@@ -26,57 +26,57 @@ var _WordcutCore = {
     return path;
   },
 
-  pathToRanges: function(path) {
+  pathToRanges: function (path) {
     var e = path.length - 1
-     , ranges = [];
+      , ranges = [];
 
     while (e > 0) {
       var info = path[e]
-       , s = info.p;
+        , s = info.p;
 
       if (info.merge !== undefined && ranges.length > 0) {
         var r = ranges[ranges.length - 1];
         r.s = info.merge;
         s = r.s;
       } else {
-        ranges.push({s:s, e:e});
+        ranges.push({ s: s, e: e });
       }
       e = s;
     }
     return ranges.reverse();
   },
 
-  rangesToText: function(text, ranges, delimiter) {
-    return ranges.map(function(r) {
+  rangesToText: function (text, ranges, delimiter) {
+    return ranges.map(function (r) {
       return text.substring(r.s, r.e);
     }).join(delimiter);
   },
 
-  cut: function(text, delimiter) {
+  cut: function (text, delimiter) {
     var path = this.buildPath(text)
       , ranges = this.pathToRanges(path);
     return this
       .rangesToText(text, ranges,
-                    (delimiter === undefined ? "|" : delimiter));
+      (delimiter === undefined ? "|" : delimiter));
   },
 
-  cutIntoRanges: function(text, noText) {
+  cutIntoRanges: function (text, noText) {
     var path = this.buildPath(text)
       , ranges = this.pathToRanges(path);
 
     if (!noText) {
-      ranges.forEach(function(r) {
+      ranges.forEach(function (r) {
         r.text = text.substring(r.s, r.e);
       });
     }
     return ranges;
   },
 
-  cutIntoArray: function(text) {
+  cutIntoArray: function (text) {
     var path = this.buildPath(text)
       , ranges = this.pathToRanges(path);
-    
-    return ranges.map(function(r) {
+
+    return ranges.map(function (r) {
       return text.substring(r.s, r.e)
     });
   }

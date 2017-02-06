@@ -18,20 +18,20 @@ Wordcut.defaultThaiRules = thaiRules;
 Wordcut.defaultDict = WordcutDict;
 
 
-Wordcut.initNoDict = function(dict_path) {
+Wordcut.initNoDict = function (dict_path) {
   var self = this;
   self.pathInfoBuilder = new self.defaultPathInfoBuilder;
   self.pathSelector = new self.defaultPathSelector;
   self.acceptors = new self.defaultAcceptors;
-  self.defaultLatinRules.forEach(function(rule) {
+  self.defaultLatinRules.forEach(function (rule) {
     self.acceptors.creators.push(rule);
   });
-  self.defaultThaiRules.forEach(function(rule) {
+  self.defaultThaiRules.forEach(function (rule) {
     self.acceptors.creators.push(rule);
   });
 };
 
-Wordcut.init = function(dict_path, withDefault, additionalWords) {
+Wordcut.init = function (dict_path, withDefault, additionalWords) {
   withDefault = withDefault || false;
   this.initNoDict();
   var dict = _.clone(this.defaultDict);
