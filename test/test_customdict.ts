@@ -1,17 +1,19 @@
 
-var expect = require("chai").expect
-  , wordcut = require("../lib/wordcut");
+var expect = require("chai").expect;
+import { WordcutCore } from "../lib/wordcut";
+
+var wordcut = new WordcutCore(); 
 
 describe("Wordcut with custom dictionary", function () {
 
   it("should recognize custom dict as glob", function () {
-    wordcut.init(__dirname + '/custom*.txt', true);
+    wordcut.init(__dirname + '/custom*.txt', true, []);
     var segmentedResult = wordcut.cutIntoArray("ฉันชอบกินข้าวอร่อยมากมาก");
     expect(segmentedResult).to.deep.equal(["ฉัน", "ชอบ", "กินข้าว", "อร่อยมากมาก"])
   });
 
   it("should recognize word in custom dict", function () {
-    wordcut.init(__dirname + '/customdict.txt', true);
+    wordcut.init(__dirname + '/customdict.txt', true, []);
     var segmentedResult = wordcut.cutIntoArray("ฉันชอบกินข้าวอร่อยมากมาก");
     expect(segmentedResult).to.deep.equal(["ฉัน", "ชอบ", "กินข้าว", "อร่อยมากมาก"])
   });
@@ -21,6 +23,4 @@ describe("Wordcut with custom dictionary", function () {
     var segmentedResult = wordcut.cutIntoArray("ฉันชอบกินข้าวอร่อยมากมาก");
     expect(segmentedResult).to.deep.equal(["ฉัน", "ชอบกิน", "ข้าวอร่อยมากมาก"])
   });
-
-
 });

@@ -66,9 +66,4 @@ export class PathInfoBuilder {
       return [this.fallback(path, leftBoundary, text, i)];
     }
   }
-};
-
-/*
-module.exports = function () {
-  return _.clone(_PathInfoBuilder);
-}*/
+}

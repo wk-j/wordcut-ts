@@ -109,9 +109,6 @@ var rules = [
   new NumberRule()
 ]
 
-export class LatinRules {
-  rules = rules;
+export function getLatinRules() {
+  return rules;
 }
-
-//var LatinRules = [WordRule, SpaceRule, SingleSymbolRule, NumberRule];
-//module.exports = LatinRules;

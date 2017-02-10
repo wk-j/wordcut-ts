@@ -1,11 +1,12 @@
 
 var expect = require("chai").expect;
-var wordcut = require("../lib/wordcut");
+import { WordcutCore } from "../lib/wordcut";
+var wordcut = new WordcutCore(); 
 
 describe("Wordcut", function () {
 
   beforeEach(function () {
-    wordcut.init();
+    wordcut.initNoDict();
   });
 
   it("should segment a simple word", function () {

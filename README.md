@@ -4,7 +4,7 @@ Thai word breaker for Node.js
 
 ## Installation
 
-> npm install wordcut
+`npm install wordcut`
 
 ## Usage
 
@@ -24,23 +24,21 @@ wordcut.init([customdict/*.txt],true);
 
 ## Command line interface
 
-```
-npm install -g wordcut
-worcut < input_file > output_file
-```
+> `worcut < input_file > output_file`
 
-*Options*
+**Options**
 
-> --delim
-> --dict
+> `--delim  --dict`
 
 ## Web API
 
-> node server.js
+**Start service**
 
-*Trying Web API*
+> `node server.js`
 
-> curl -X POST --data-binary '{"line":"กากา"}' http://localhost:8882/segment
+**Trying Web API**
+
+> `curl -X POST --data-binary '{"line":"กากา"}' http://localhost:8882/segment`
 
 ## Development
 

@@ -8,15 +8,15 @@ function isMatch(pat, offset, ch) {
     (_ch.match(/\u0E49/) && ch.match(/[\u0E48-\u0E4B]/));
 }
 
-var Rule0 = {
-  pat: "เหก็ม",
-  createAcceptor: function (tag) {
+export class Rule0  {
+  pat: "เหก็ม";
+  createAcceptor(tag) {
     return {
       strOffset: 0,
       isFinal: false,
       transit: function (ch) {
-        if (isMatch(Rule0.pat, this.strOffset, ch)) {
-          this.isFinal = (this.strOffset + 1 == Rule0.pat.length);
+        if (isMatch(this.pat, this.strOffset, ch)) {
+          this.isFinal = (this.strOffset + 1 == this.pat.length);
           this.strOffset++;
         } else {
           this.isError = true;
@@ -29,10 +29,10 @@ var Rule0 = {
       w: 1
     };
   }
-};
+}
 
-var PartRule = {
-  createAcceptor: function (tag) {
+export class PartRule {
+  createAcceptor (tag) {
     return {
       strOffset: 0,
       patterns: [
@@ -63,8 +63,11 @@ var PartRule = {
       w: 1
     };
   }
-};
+}
 
-var _ThaiRules = [Rule0, PartRule];
-
-module.exports = _ThaiRules;
+export function getThaiRules() {
+  return [
+    new Rule0(),
+    new PartRule()
+  ];
+}

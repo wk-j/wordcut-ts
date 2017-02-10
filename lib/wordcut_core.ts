@@ -1,6 +1,38 @@
-var _WordcutCore = {
+import { WordcutDict } from "./dict";
+import { PathInfoBuilder } from "./path_info_builder";
+import { PathSelector }  from "./path_selector";
+import { Acceptors } from "./acceptors";
+import { getLatinRules } from "./latin_rules";
+import { getThaiRules} from "./thai_rules";
+var _ = require("underscore");
 
-  buildPath: function(text) {
+export class WordcutCore {
+
+  pathSelector = new PathSelector();
+  acceptors = new Acceptors();
+  pathInfoBuilder = new PathInfoBuilder();
+
+  constructor() { 
+    getThaiRules().forEach(x => {
+      this.acceptors.creators.push(x);
+    });
+
+    getLatinRules().forEach(x => {
+      this.acceptors.creators.push(x);
+    });
+  }
+
+  initNoDict () {
+    this.init(null, false, []);
+  };
+
+  public init(dict_path, withDefault, additionalWords) {
+    var dict = new WordcutDict();
+    dict.init(dict_path, withDefault, additionalWords);
+    this.acceptors.creators.push(dict);
+  }
+
+  buildPath(text) {
     var self = this
       , path = self.pathSelector.createPath()
       , leftBoundary = 0;
@@ -9,13 +41,7 @@ var _WordcutCore = {
       var ch = text[i];
       self.acceptors.transit(ch);
 
-      var possiblePathInfos = self
-        .pathInfoBuilder
-        .build(path,
-               self.acceptors.getFinalAcceptors(),
-               i,
-               leftBoundary,
-               text);
+      var possiblePathInfos = self .pathInfoBuilder .build(path, self.acceptors.getFinalAcceptors(), i, leftBoundary, text);
       var selectedPath = self.pathSelector.selectPath(possiblePathInfos)
 
       path.push(selectedPath);
@@ -24,62 +50,60 @@ var _WordcutCore = {
       }
     }
     return path;
-  },
+  }
 
-  pathToRanges: function(path) {
+  pathToRanges(path) {
     var e = path.length - 1
-     , ranges = [];
+      , ranges = [];
 
     while (e > 0) {
       var info = path[e]
-       , s = info.p;
+        , s = info.p;
 
       if (info.merge !== undefined && ranges.length > 0) {
         var r = ranges[ranges.length - 1];
         r.s = info.merge;
         s = r.s;
       } else {
-        ranges.push({s:s, e:e});
+        ranges.push({ s: s, e: e });
       }
       e = s;
     }
     return ranges.reverse();
-  },
+  }
 
-  rangesToText: function(text, ranges, delimiter) {
-    return ranges.map(function(r) {
+  rangesToText(text, ranges, delimiter) {
+    return ranges.map(function (r) {
       return text.substring(r.s, r.e);
     }).join(delimiter);
-  },
+  }
 
-  cut: function(text, delimiter) {
+  public cut(text, delimiter?) {
     var path = this.buildPath(text)
       , ranges = this.pathToRanges(path);
     return this
       .rangesToText(text, ranges,
-                    (delimiter === undefined ? "|" : delimiter));
-  },
+      (delimiter === undefined ? "|" : delimiter));
+  }
 
-  cutIntoRanges: function(text, noText) {
-    var path = this.buildPath(text)
-      , ranges = this.pathToRanges(path);
+  cutIntoRanges(text, noText) {
+    var path = this.buildPath(text);
+    var ranges = this.pathToRanges(path);
 
     if (!noText) {
-      ranges.forEach(function(r) {
+      ranges.forEach(function (r) {
         r.text = text.substring(r.s, r.e);
       });
     }
     return ranges;
-  },
+  }
 
-  cutIntoArray: function(text) {
-    var path = this.buildPath(text)
-      , ranges = this.pathToRanges(path);
-    
-    return ranges.map(function(r) {
+  cutIntoArray(text) {
+    var path = this.buildPath(text);
+    var ranges = this.pathToRanges(path);
+
+    return ranges.map(function (r) {
       return text.substring(r.s, r.e)
     });
   }
-};
-
-module.exports = _WordcutCore;
+}

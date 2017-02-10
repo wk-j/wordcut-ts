@@ -47,12 +47,4 @@ export class Acceptors {
       return acceptor.isFinal;
     });
   }
-};
-
-/*
-module.exports = function () {
-  var acceptors = _.clone(_Acceptors);
-  acceptors.init();
-  return acceptors;
-};
-*/
+}
