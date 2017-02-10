@@ -1,6 +1,8 @@
-## Wordcut
+## Wordcut ported to TypeScript
 
 Thai word breaker for Node.js
+
+Under development ...
 
 ## Installation
 
@@ -24,21 +26,21 @@ wordcut.init([customdict/*.txt],true);
 
 ## Command line interface
 
-> `worcut < input_file > output_file`
+`worcut < input_file > output_file`
 
 **Options**
 
-> `--delim  --dict`
+`--delim  --dict`
 
 ## Web API
 
 **Start service**
 
-> `node server.js`
+`node server.js`
 
-**Trying Web API**
+**Trying web API**
 
-> `curl -X POST --data-binary '{"line":"กากา"}' http://localhost:8882/segment`
+`curl -X POST --data-binary '{"line":"กากา"}' http://localhost:8882/segment`
 
 ## Development
 
