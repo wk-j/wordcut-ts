@@ -1,8 +1,7 @@
 var _ = require("underscore");
 
-
-var _PathSelector = {
-  selectPath: function (paths) {
+export class PathSelector {
+  selectPath(paths) {
     var path = paths.reduce(function (selectedPath, path) {
       if (selectedPath == null) {
         return path;
@@ -21,13 +20,9 @@ var _PathSelector = {
       }
     }, null);
     return path;
-  },
+  }
 
-  createPath: function () {
+  createPath() {
     return [{ p: null, w: 0, unk: 0, type: "INIT", mw: 0 }];
   }
-};
-
-module.exports = function () {
-  return _.clone(_PathSelector);
-};
+}
