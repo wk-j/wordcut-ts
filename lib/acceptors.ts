@@ -20,7 +20,7 @@ export class Acceptors {
   transit(ch) {
     var self = this;
 
-    self.creators.forEach(function (creator) {
+    self.creators.forEach(creator => {
       var acceptor = creator.createAcceptor(self.tag);
       if (acceptor)
         self.current.push(acceptor);

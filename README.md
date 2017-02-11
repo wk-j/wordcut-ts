@@ -29,7 +29,7 @@ wordcut.init([customdict/*.txt],true);
 ## Command line interface
 
 ```
-worcut < input_file > output_file
+wordcut < input_file > output_file
 ```
 
 Options 
