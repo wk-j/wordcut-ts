@@ -1,46 +1,35 @@
 ## Wordcut ported to TypeScript
 
-Thai word breaker for Node.js
+Thai word breaker library for Node.js
 
 Under development ...
 
 ## Installation
 
 ```
-npm install wordcut
+npm install wordcut-ts
 ```
 
 ## Usage
 
-```javascript
-var wordcut = require("wordcut");
+```typescript
+import { Wordcut } from "../lib/wordcut";
 
-wordcut.init();
+var wordcut = new Wordcut(); 
+wordcut.initNoDict();
+
 console.log(wordcut.cut("กากา"));
 ```
 
 With additional custom dictionary
 
-```javascript
-//see test/test_customdict.js
-wordcut.init([customdict/*.txt],true);
-```
-
-## Command line interface
-
-```
-wordcut < input_file > output_file
-```
-
-Options 
-
-```
---delim  --dict
+```typescript
+wordcut.init("customdict/*.txt" ,true);
 ```
 
 ## Web API
 
-```
+```bash
 node server.js
 curl -X POST --data-binary '{"line":"กากา"}' http://localhost:8882/segment
 ```

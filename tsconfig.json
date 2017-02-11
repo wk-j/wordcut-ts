@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "types": ["node", "mocha"],
+        "declaration": true,
         "target": "ES6",
         "module": "commonjs",
         "sourceMap": true,

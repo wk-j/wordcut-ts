@@ -1,7 +1,7 @@
 
 var expect = require("chai").expect;
-import { WordcutCore } from "../lib/wordcut";
-var wordcut = new WordcutCore(); 
+import { Wordcut} from "../lib/wordcut";
+var wordcut = new Wordcut(); 
 
 describe("Wordcut", function () {
 

@@ -11,6 +11,8 @@ Icon
 
 tools
 
+*.d.ts
+
 lib/*.js
 lib/*.map
 server.js

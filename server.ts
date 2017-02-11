@@ -1,8 +1,10 @@
 var http = require("http");
 var jsonBody = require("body/json");
-var wordcut = require("./lib/wordcut");
+import { Wordcut } from "./lib/wordcut";
 
-wordcut.init();
+var wordcut = new Wordcut();
+wordcut.initNoDict();
+
 var server = http.createServer(function (req, res) {
 	if (req.url == '/segment' && req.method == 'POST') {
 		jsonBody(req, res, function (err, body) {
