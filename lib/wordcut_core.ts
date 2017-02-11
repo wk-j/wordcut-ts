@@ -79,11 +79,10 @@ export class WordcutCore {
   }
 
   public cut(text, delimiter?) {
-    var path = this.buildPath(text)
-      , ranges = this.pathToRanges(path);
-    return this
-      .rangesToText(text, ranges,
-      (delimiter === undefined ? "|" : delimiter));
+    var path = this.buildPath(text);
+    var ranges = this.pathToRanges(path);
+
+    return this.rangesToText(text, ranges, (delimiter === undefined ? "|" : delimiter));
   }
 
   cutIntoRanges(text, noText) {

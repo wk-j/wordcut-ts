@@ -11,12 +11,13 @@ function isMatch(pat, offset, ch) {
 export class Rule0  {
   pat: "เหก็ม";
   createAcceptor(tag) {
+    var that = this;
     return {
       strOffset: 0,
       isFinal: false,
-      transit: function (ch) {
-        if (isMatch(this.pat, this.strOffset, ch)) {
-          this.isFinal = (this.strOffset + 1 == this.pat.length);
+      transit (ch) {
+        if (isMatch(that.pat, this.strOffset, ch)) {
+          this.isFinal = (this.strOffset + 1 == that.pat.length);
           this.strOffset++;
         } else {
           this.isError = true;
@@ -67,7 +68,7 @@ export class PartRule {
 
 export function getThaiRules() {
   return [
-    new Rule0(),
+    //new Rule0(),
     new PartRule()
   ];
 }

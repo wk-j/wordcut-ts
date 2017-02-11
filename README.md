@@ -28,19 +28,14 @@ wordcut.init([customdict/*.txt],true);
 
 `worcut < input_file > output_file`
 
-**Options**
-
-`--delim  --dict`
+Options `--delim  --dict`
 
 ## Web API
 
-**Start service**
-
-`node server.js`
-
-**Trying web API**
-
-`curl -X POST --data-binary '{"line":"กากา"}' http://localhost:8882/segment`
+```
+node server.js
+curl -X POST --data-binary '{"line":"กากา"}' http://localhost:8882/segment
+```
 
 ## Development
 
