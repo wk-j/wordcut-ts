@@ -22,6 +22,7 @@ Action<string, string> run = (cmd, args) => StartProcess(cmd, new ProcessSetting
 Task("Build").Does(() => run("node", "node_modules/typescript/lib/tsc.js"));
 Task("Watch").Does(() => run("node", "node_modules/typescript/lib/tsc.js --watch"));
 Task("Test").Does(() => run("npm", "run test"));
+Task("Publish").Does(() => run("npm", "publish"));
 
 var target = Argument("Target", "Default");
 RunTarget(target);

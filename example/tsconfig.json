@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "types": ["node", "mocha"],
+        "target": "ES6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "removeComments": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

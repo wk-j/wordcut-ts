@@ -21,6 +21,9 @@ server*.map
 test/*.js
 test/*.map
 
+example/*.js
+example/*.map
+
 experimental/*.js
 experimental/*.map
 

@@ -7,13 +7,13 @@ Under development ...
 ## Installation
 
 ```
-npm install wordcut-ts
+yarn add wordcut-ts
 ```
 
 ## Usage
 
 ```typescript
-import { Wordcut } from "../lib/wordcut";
+import { Wordcut } from "wordcut-ts";
 
 var wordcut = new Wordcut(); 
 wordcut.initNoDict();
