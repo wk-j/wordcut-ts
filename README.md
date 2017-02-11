@@ -6,7 +6,9 @@ Under development ...
 
 ## Installation
 
-`npm install wordcut`
+```
+npm install wordcut
+```
 
 ## Usage
 
@@ -26,9 +28,15 @@ wordcut.init([customdict/*.txt],true);
 
 ## Command line interface
 
-`worcut < input_file > output_file`
+```
+worcut < input_file > output_file
+```
 
-Options `--delim  --dict`
+Options 
+
+```
+--delim  --dict
+```
 
 ## Web API
 

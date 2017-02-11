@@ -12,7 +12,7 @@ export class PathInfoBuilder {
         p: p,
         mw: _info.mw + (acceptor.mw === undefined ? 0 : acceptor.mw),
         w: acceptor.w + _info.w,
-        merge: 0,
+        merge: undefined,
         unk: (acceptor.unk ? acceptor.unk : 0) + _info.unk,
         type: acceptor.type
       };
