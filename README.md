@@ -2,8 +2,6 @@
 
 Thai word breaker library for Node.js
 
-Under development ...
-
 ## Installation
 
 ```
@@ -13,9 +11,9 @@ yarn add wordcut-ts
 ## Usage
 
 ```typescript
-import { Wordcut } from "wordcut-ts";
+import { Wordcut } from "wordcut-ts/lib/wordcut";
 
-var wordcut = new Wordcut(); 
+var wordcut = new Wordcut();
 wordcut.initNoDict();
 
 console.log(wordcut.cut("กากา"));

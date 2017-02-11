@@ -273,9 +273,9 @@ underscore@*:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
-wordcut-ts@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/wordcut-ts/-/wordcut-ts-0.0.2.tgz#999036ba7d28951a9553f6406c8d58f623a53cf4"
+wordcut-ts@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/wordcut-ts/-/wordcut-ts-0.0.3.tgz#77983e014478e67d77195c7ff1f7c626fd8a8712"
   dependencies:
     "@types/underscore" "^1.7.36"
     body "*"
